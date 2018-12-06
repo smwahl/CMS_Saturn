@@ -77,6 +77,10 @@ found in the following references:
 
 - Wahl, S. M., Hubbard, W. B., Militzer, B., Guillot, T., Miguel, Y., Movshovitz, N., … Bolton, S. J. (2017). Comparing Jupiter interior structure models to Juno gravity measurements and the role of a dilute core. Geophysical Research Letters, 44(10), 4649–4659. http://doi.org/10.1002/2017GL073160
 
+The interior models rely on equations of state for hydrogen helium mixtures, based on
+ab-intio (DFT-MD) computer simulations, which are freely available
+[here](http://militzer.berkeley.edu/HHe-EOS/)
+
 ### Example
 
 We provide and example input file in `params_example.txt`, which represents the
