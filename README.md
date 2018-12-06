@@ -50,20 +50,19 @@ desired output file
 
 ### Input parameters
 
-The code can be run in two modes:
+The code can be run in two modes, specified using the parameter mode `mode`:
 
 1. A single CMS simulation defined by the following input parameters:
 
-    - Deep interior rotation perioud ($T_{sid}$)
-    - Entropy of outer envelope ($S_{mol}$)
-    - Helium mass fraction of outer envelope ($Y_{mol}$)
-    - Heavy element mass fraction of outer envelope ($Z_{mol}$)
-    - Entropy of outer envelope ($S_{met}$)
-    - Helium mass fraction of outer envelope ($Y_{met}$)
-    - Heavy element mass fraction of outer envelope ($Z_{met}$)
+    - Deep interior rotation perioud (`Tsid`)
+    - Entropy of outer envelope (`Smol`)
+    - Helium mass fraction of outer envelope (`Ymol`)
+    - Heavy element mass fraction of outer envelope (`Zmol`)
+    - Entropy of outer envelope (`Smet`)
+    - Helium mass fraction of outer envelope (`Ymet`)
+    - Heavy element mass fraction of outer envelope (`Zmet`)
 
-2. A Monte Carlo sampling of the parameter space ($S_{mol}$, $Y_{mol}$, $Z_{mol}$,
-$S_{met}$, $Y_{met}$, $Z_{met}$) for a specified deep rotation period  ($T_{sid}$).
+2. A Monte Carlo sampling of the parameter space (`Smol`,`Ymol`, `Zmol`, `Smet`, `Ymet`, `Zmet`) for a specified deep rotation period  (`Tsid`).
     
     - In this case the other six parameters in the parameter file represent the
       starting point of the Monte Carlo Sampling.
@@ -83,15 +82,15 @@ found in the following references:
 We provide and example input file in `params_example.txt`, which represents the
 parameters for the representative model with a deep interior rotation rate of 10h39m22s
 (Column 5 of Table 2 in the article). We also provide a corresponding output file
-`output_example.txt'
+`output_example.txt' showing the expected output.
 
-Here are the parameters appearing in params_example.txt
+Here are the parameters appearing in `params_example.txt`
 
 ~~~bash
 mode 0 # Single CMS calculation
 #mode 1 # full Monte Carlo Calculation
 
-Tsid  # rotation rate in seconds
+Tsid 38362.0  # rotation rate in seconds
 
 Smol  # Interior Parameters
 Ymol
@@ -106,17 +105,17 @@ Zmet
 ## Citation
 
 
-To cite cmsmc or derived code in publcations, please include the following
+To cite ***cmsmc*** or derived code in publcations, please include the following
 publications:
 
-Hubbard, W. B. (2013). Concentric Maclaurin Spheroid Models of Rotating Liquid Planets. The Astrophysical Journal, 768(1), 43. http://doi.org/10.1088/0004-637X/768/1/43
+- Hubbard, W. B. (2013). Concentric Maclaurin Spheroid Models of Rotating Liquid Planets. The Astrophysical Journal, 768(1), 43. http://doi.org/10.1088/0004-637X/768/1/43
 
-Wahl, S. M., Hubbard, W. B., & Militzer, B. (2017). The Concentric Maclaurin Spheroid method with tides and a rotational enhancement of Saturn’s tidal response. Icarus, 282, 183–194. http://doi.org/10.1016/j.icarus.2016.09.011
+- Wahl, S. M., Hubbard, W. B., & Militzer, B. (2017). The Concentric Maclaurin Spheroid method with tides and a rotational enhancement of Saturn’s tidal response. Icarus, 282, 183–194. http://doi.org/10.1016/j.icarus.2016.09.011
 
 Iess, L., et al. (2019). Measurement and implications of Saturn's gravity field and
 ring mass. Science, in Press.
 
-A Bibtex entry for LaTeX users is:
+A Bibtex entry for _LaTeX_ users is:
 
 ~~~
 @article{Hubbard2013,
