@@ -1,0 +1,49 @@
+
+To cite cmsmc or derived code in publcations, please include the following
+publications:
+
+Hubbard, W. B. (2013). Concentric Maclaurin Spheroid Models of Rotating Liquid Planets. The Astrophysical Journal, 768(1), 43. http://doi.org/10.1088/0004-637X/768/1/43
+
+Wahl, S. M., Hubbard, W. B., & Militzer, B. (2017). The Concentric Maclaurin Spheroid method with tides and a rotational enhancement of Saturn’s tidal response. Icarus, 282, 183–194. http://doi.org/10.1016/j.icarus.2016.09.011
+
+Iess, L., et al. (2019). Measurement and implications of Saturn's gravity field and
+ring mass. Science, in Press.
+
+A Bibtex entry for LaTeX users is:
+
+@article{Hubbard2013,
+author = {Hubbard, William B.},
+doi = {10.1088/0004-637X/768/1/43},
+file = {:Users/swahl/Documents/Mendeley Desktop/Hubbard/2013/Hubbard - 2013 - The Astrophysical Journal.pdf:pdf},
+issn = {0004-637X},
+journal = {Astrophys. J.},
+month = {may},
+number = {1},
+pages = {43},
+title = {{Concentric Maclaurin Spheroid Models of Rotating Liquid Planets}},
+url = {http://stacks.iop.org/0004-637X/768/i=1/a=43?key=crossref.a31bd47c857111e805198695ba70780e},
+volume = {768},
+year = {2013}
+}
+@article{Wahl2017,
+author = {Wahl, Sean M. and Hubbard, William B. and Militzer, Burkhard},
+doi = {10.1016/j.icarus.2016.09.011},
+eprint = {1602.07350},
+file = {:Users/swahl/Documents/Mendeley Desktop/Wahl, Hubbard, Militzer/2017/Wahl, Hubbard, Militzer - 2017 - Icarus.pdf:pdf},
+issn = {10902643},
+journal = {Icarus},
+pages = {183--194},
+publisher = {Elsevier Inc.},
+title = {{The Concentric Maclaurin Spheroid method with tides and a rotational enhancement of Saturn's tidal response}},
+volume = {282},
+year = {2017}
+}
+@article{Iess2019,
+author = {Iess, L. and Militzer, B. and Kaspi, Y. and Nicholson, P. and Durante, D. and Racioppa, P. and Anabtaw, A. and Galanti, E. and Hubbard, W. and Mariani, M. J. and Tortora, P. and Wahl, S. M. and Zannoni, M.},
+journal = {Science (80-. ).},
+mendeley-groups = {Bibliographies/CMS papers},
+title = {{Measurement and implications of Saturn's gravity field and ring mass}},
+volume = {(in Press)},
+year = {2019}
+}
+
