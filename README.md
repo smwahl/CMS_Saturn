@@ -1,4 +1,5 @@
-# cmsmc
+# cmsmc_saturn
+
 Axisymmetric Concentric Maclaurin Spheroid simulations of Saturn with Differential Rotation and Monte Carlo sampling.
 
 ## Synopsis
@@ -33,7 +34,7 @@ compiler (gcc version 5.2.0). And has been tested to work on similar Unix system
 unzip cmsmc_release_linux_v1.0.zip
 ~~~
 
-- You may need to change permisions on the executable file.
+- You may need to change permissions on the executable file.
 
 ~~~bash
 chmod +x cms
@@ -41,32 +42,40 @@ chmod +x cms
 
 ## Running the Code
 
-Simply run the executable with the parameter file as the only argument and the
-desired output file
+The executable must be called from the command line with 9 input arguments:
 
 ~~~bash
-./cms params.txt > output.txt
+./cms mode Tsid Rcore Smol Ymol Zmol Smet Ymet Zmet
 ~~~
 
 ### Input parameters
 
+The model is described by two general physical parameters 
+
+- Deep interior rotation period (`Tsid`) in seconds.
+- Fractional radius of the core (`Rcore`).
+
+The barotropic density profile is described by 6 parameters (3 for the outer,
+molecular envelope, and 3 for the inner, metallic
+
+- Entropy of outer envelope (`Smol`) in ***Units***
+- Helium mass fraction of outer envelope (`Ymol`)
+- Heavy element mass fraction of outer envelope (`Zmol`)
+- Entropy of outer envelope (`Smet`) in ***Units***
+- Helium mass fraction of outer envelope (`Ymet`)
+- Heavy element mass fraction of outer envelope (`Zmet`)
+
+
 The code can be run in two modes, specified using the parameter mode `mode`:
 
-1. A single CMS simulation defined by the following input parameters:
+1. A single CMS simulation for a set of input parameters (`mode`= 0)
 
-    - Deep interior rotation perioud (`Tsid`)
-    - Entropy of outer envelope (`Smol`)
-    - Helium mass fraction of outer envelope (`Ymol`)
-    - Heavy element mass fraction of outer envelope (`Zmol`)
-    - Entropy of outer envelope (`Smet`)
-    - Helium mass fraction of outer envelope (`Ymet`)
-    - Heavy element mass fraction of outer envelope (`Zmet`)
+2. A Monte Carlo sampling of the parameter space (`mode` = 1), where the specified
+   model conditions give the initial model for the Monte Carlo sampling.
 
-2. A Monte Carlo sampling of the parameter space (`Smol`,`Ymol`, `Zmol`, `Smet`, `Ymet`, `Zmet`) for a specified deep rotation period  (`Tsid`).
+   - The MC procedure updates the 6 barotrope parameters while holding the general
+     physical parametes constant.
     
-    - In this case the other six parameters in the parameter file represent the
-      starting point of the Monte Carlo Sampling.
-
 **Note: the Monte Carlo sampling is sensitive to the starting parameters and may fail
 for some combination of inputs.**
 
@@ -83,33 +92,24 @@ ab-intio (DFT-MD) computer simulations, which are freely available
 
 ### Example
 
-We provide and example input file in `params_example.txt`, which represents the
-parameters for the representative model with a deep interior rotation rate of 10h39m22s
-(Column 5 of Table 2 in the article). We also provide a corresponding output file
+We provide and example input in `example.scr`, which represents the parameters for
+the representative model with a deep interior rotation rate of 10h39m22s (Column 5 of
+Table 2 in the article). We also provide a corresponding output file
 `output_example.txt' showing the expected output.
 
-Here are the parameters appearing in `params_example.txt`
+Here are the parameters appearing in `example.scr`
+
+***Note: Placeholder values -- These will change in the submitted version***
 
 ~~~bash
-mode 0 # Single CMS calculation
-#mode 1 # full Monte Carlo Calculation
-
-Tsid 38362.0  # rotation rate in seconds
-
-Smol  # Interior Parameters
-Ymol
-Zmol
-Smet
-Ymet
-Zmet
+./cms 1 0.2 38362.0 7.1976 0.2333 0.0169 7.1976 0.2333 0.0514 > output.txt
 ~~~
 
 ### Analyzing the Output
 
 ## Citation
 
-
-To cite ***cmsmc*** or derived code in publcations, please include the following
+To cite ***cmsmc*** or derived code in publications, please include the following
 publications:
 
 - Hubbard, W. B. (2013). Concentric Maclaurin Spheroid Models of Rotating Liquid Planets. The Astrophysical Journal, 768(1), 43. http://doi.org/10.1088/0004-637X/768/1/43

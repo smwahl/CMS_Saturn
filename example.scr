@@ -1,0 +1,10 @@
+#! /bin/bash
+
+
+
+## Run a single CMS simulation with specified model parameters
+./cms 0 0.2 38362.0 7.1976 0.2333 0.0169 7.1976 0.2333 0.0514 > output.txt
+
+
+## Run a MC parameter search starting with the specified model parameters 
+# ./cms 1 0.2 38362.0 7.1976 0.2333 0.0169 7.1976 0.2333 0.0514 > outputMC.txt
