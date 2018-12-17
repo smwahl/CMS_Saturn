@@ -1,6 +1,6 @@
 # CMS_Saturn
 
-Axisymmetric Concentric Maclaurin Spheroid simulations of Saturn with Differential Rotation and Monte Carlo sampling.
+Axisymmetric Concentric Maclaurin Spheroid (CMS) simulations of Saturn with Differential Rotation and Monte Carlo sampling.
 
 ## Synopsis
 
@@ -80,7 +80,7 @@ The code will run two initial calculations
 2. A series of calculations attempting to fit the target value for J_2 using the 
 
 If the flag `runMC` is omitted the code will then stop at this point; if `runMC` is
-included it will proceed to run Monte Carlo sampling with the 
+included it will proceed to run Monte Carlo sampling. 
 
 ### Model parameters
 
