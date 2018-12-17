@@ -6,6 +6,8 @@ Hubbard, W. B. (2013). Concentric Maclaurin Spheroid Models of Rotating Liquid P
 
 Wahl, S. M., Hubbard, W. B., & Militzer, B. (2017). The Concentric Maclaurin Spheroid method with tides and a rotational enhancement of Saturn’s tidal response. Icarus, 282, 183–194. http://doi.org/10.1016/j.icarus.2016.09.011
 
+Wahl, S. M., Hubbard, W. B., Militzer, B., Guillot, T., Miguel, Y., Movshovitz, N., … Bolton, S. J. (2017). Comparing Jupiter interior structure models to Juno gravity measurements and the role of a dilute core. Geophysical Research Letters, 44(10), 4649–4659. http://doi.org/10.1002/2017GL073160
+
 Iess, L., et al. (2019). Measurement and implications of Saturn's gravity field and
 ring mass. Science, in Press.
 
@@ -25,7 +27,7 @@ url = {http://stacks.iop.org/0004-637X/768/i=1/a=43?key=crossref.a31bd47c857111e
 volume = {768},
 year = {2013}
 }
-@article{Wahl2017,
+@article{Wahl2017a,
 author = {Wahl, Sean M. and Hubbard, William B. and Militzer, Burkhard},
 doi = {10.1016/j.icarus.2016.09.011},
 eprint = {1602.07350},
@@ -36,6 +38,18 @@ pages = {183--194},
 publisher = {Elsevier Inc.},
 title = {{The Concentric Maclaurin Spheroid method with tides and a rotational enhancement of Saturn's tidal response}},
 volume = {282},
+year = {2017}
+}
+@article{Wahl2017b,
+author = {Wahl, S. M. and Hubbard, W. B. and Militzer, B. and Guillot, T. and Miguel, Y. and Movshovitz, N. and Kaspi, Y. and Helled, R. and Reese, D. and Galanti, E. and Levin, S. and Connerney, J. E. and Bolton, S. J.},
+doi = {10.1002/2017GL073160},
+file = {:Users/swahl/Documents/Mendeley Desktop/Wahl et al/2017/Wahl et al. - 2017 - Geophysical Research Letters.pdf:pdf},
+issn = {19448007},
+journal = {Geophys. Res. Lett.},
+number = {10},
+pages = {4649--4659},
+title = {{Comparing Jupiter interior structure models to Juno gravity measurements and the role of a dilute core}},
+volume = {44},
 year = {2017}
 }
 @article{Iess2019,
