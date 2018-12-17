@@ -1,4 +1,4 @@
-# cmsmc_saturn
+# CMS_Saturn
 
 Axisymmetric Concentric Maclaurin Spheroid simulations of Saturn with Differential Rotation and Monte Carlo sampling.
 
@@ -21,8 +21,10 @@ representative model presented in column 5 of Table 2.
 
 ## Requirements
 
-We provide binary executable compiled on x86_64 Ubuntu Linux using the GNU c++
-compiler (gcc version 5.2.0). And has been tested to work on similar Unix systems.
+We provide two binary executables: one compiled on x86_64 Ubuntu Linux using the GNU
+c++ compiler (gcc version 5.2.0). And has been tested to work on similar Unix
+systems.  The other was compiled on MacOS 10.XX.XX (gcc version X.X.X) and has been
+tested to work on other recent versions.
 
 ## Installation 
 
@@ -31,51 +33,86 @@ compiler (gcc version 5.2.0). And has been tested to work on similar Unix system
 - Uncompress the the ZIP file.
 
 ~~~bash
-unzip cmsmc_release_linux_v1.0.zip
+unzip cmsmc_release_linux_v1.0.zip cms_saturn_v1.0_science.zip
 ~~~
 
-- You may need to change permissions on the executable file.
+- You may need to change permissions on the executable files.
 
 ~~~bash
-chmod +x cms
+chmod +x cms_Linux cms_MAC
 ~~~
 
 ## Running the Code
 
-The executable must be called from the command line with 9 input arguments:
+Select the correct executable for your system `cms_Linux` or `cms_MAC`.
+
+The program is exexcuted with the :
 
 ~~~bash
-./cms mode Tsid Rcore Smol Ymol Zmol Smet Ymet Zmet
+./cms file=initial_models.txt iModel=random runMC
 ~~~
 
-### Input parameters
+This begins a Monte Carlo search of cms models starting from one of 11 starting
+models included in `initial_models.txt`. A sample output text file is included for
+this in `sample_output.txt`.
+
+### Command-line arguments
+
+The CMS model is initialized to a set of starting conditions contained in a text
+file. The argument `file=initial_models.txt` specifies this file, and the argument
+`iModel` selects which model to start the simulation with (e.g. `iModel=5`).
+`iModel=random` will choose one of the starting models at random.
+
 
 The model is described by two general physical parameters 
 
-- Deep interior rotation period (`Tsid`) in seconds.
-- Fractional radius of the core (`Rcore`).
+- Deep interior rotation period, `P`, in hours:minutes:seconds (default = 10:39:22.4).
+- Fractional radius of the core, `rCore` (default = 0.2).
 
-The barotropic density profile is described by 6 parameters (3 for the outer,
-molecular envelope, and 3 for the inner, metallic
+The code can then be ran for each value presented in the article using:
 
-- Entropy of outer envelope (`Smol`) in ***Units***
-- Helium mass fraction of outer envelope (`Ymol`)
-- Heavy element mass fraction of outer envelope (`Zmol`)
-- Entropy of outer envelope (`Smet`) in ***Units***
-- Helium mass fraction of outer envelope (`Ymet`)
-- Heavy element mass fraction of outer envelope (`Zmet`)
+~~~bash
+./cms file=initial_models.txt iModel=random runMC rCore=0.188
+./cms file=initial_models.txt iModel=random runMC rCore=0.231
+./cms file=initial_models.txt iModel=random runMC P=10:32:44
+./cms file=initial_models.txt iModel=random runMC P=10:39:22.4
+./cms file=initial_models.txt iModel=random runMC P=10:45:45
+./cms file=initial_models.txt iModel=random runMC P=10:47:06
+~~~
 
-
-The code can be run in two modes, specified using the parameter mode `mode`:
-
-1. A single CMS simulation for a set of input parameters (`mode`= 0)
-
-2. A Monte Carlo sampling of the parameter space (`mode` = 1), where the specified
-   model conditions give the initial model for the Monte Carlo sampling.
-
-   - The MC procedure updates the 6 barotrope parameters while holding the general
-     physical parametes constant.
+The code will run two initial calculations
     
+1. An initial simulation with the parameters in the input file.
+2. A series of calculations attempting to fit the target value for $J_2$ using the 
+
+If the flag `runMC` is omitted the code will then stop at this point; if `runMC` is
+included it will proceed to run Monte Carlo sampling with the 
+
+### Model parameters
+
+The MC sampling samples a set of parameters for the interior structure of the CMS
+saturn models.
+The barotropic density profile is described by 8 parameters describing conditions in
+the outer, molecular envelope, the inner, metallic envelope, and the transition
+between the two states
+
+- Entropy of outer envelope (`S1`) in ***Units***
+- Helium mass fraction of outer envelope (`Y1`)
+- Heavy element mass fraction of outer envelope (`Z1`)
+- Entropy of outer envelope (`S2`) in ***Units***
+- Helium mass fraction of outer envelope (`Y2`)
+- Heavy element mass fraction of outer envelope (`Z2`)
+- Pressure of the top of the helium rain layer (`PSwitch1`)
+- Pressure of the bottom of the helium rain layer (`PSwitch2`)
+
+Finally, the models have profile of differential rotation (`omega`) described by fraction of
+the deep rotation rate (`P`) as a function of distance from the rotational axis. A
+uniformly rotating planet would, thus be described with:
+
+~~~bash
+omega= +1.0 +1.0 +1.0 +1.0 +1.0 +1.0
+~~~
+
 **Note: the Monte Carlo sampling is sensitive to the starting parameters and may fail
 for some combination of inputs.**
 
@@ -90,26 +127,74 @@ The interior models rely on equations of state for hydrogen helium mixtures, bas
 ab-intio (DFT-MD) computer simulations, which are freely available
 [here](http://militzer.berkeley.edu/HHe-EOS/)
 
-### Example
+## Analyzing the Output
 
-We provide and example input in `example.scr`, which represents the parameters for
-the representative model with a deep interior rotation rate of 10h39m22s (Column 5 of
-Table 2 in the article). We also provide a corresponding output file
-`output_example.txt' showing the expected output.
+Over the course of the simulation the code output's the state of the simulation. The
+output includes the model parameters
 
-Here are the parameters appearing in `example.scr`
-
-***Note: Placeholder values -- These will change in the submitted version***
-
-~~~bash
-./cms 1 0.2 38362.0 7.1976 0.2333 0.0169 7.1976 0.2333 0.0514 > output.txt
+~~~
+CMS finished: chi2= 0.3061849421 for  MC Parameters: S1=  +6.8416240000 Y1=  +0.2652640273 Z1=  +0.0118391310 S2=  +7.1056362659 Y2=  +0.2781065949 Z2=  +0.0323756282 PSwitch1=  +78.9406658821 PSwitch2=  +103.2695309206 omega= +0.9913867210 +0.9948385058 +1.0044704847 +1.0250106842 +1.0390679124 +1.0447764244
 ~~~
 
-### Analyzing the Output
+and a comparison of the calculated and observed (target) gravitational harmonics
+$J_n$
+
+~~~
+Target:         J2= 16290.5510 J4=  -935.2490 J6=    86.3580 J8=   -14.5390 J10=     4.7750
+Final: Jn*10^6: J2= 16290.5511 J4=  -935.2340 J6=    86.3283 J8=   -14.7986 J10=     4.7767 J12=    -1.4177 J14=   0.146974 J16=   0.028970
+~~~
+
+Prior to the start of the monte carlo sampling the the state of the initial CMS
+calculation is noted by:
+
+~~~
+Very first CMS run was successful for:
+~~~
+
+And the state of the model upon the inital fit to J2 is denoted by
+
+~~~
+Matched J2
+~~~
+
+### Monte Carlo Sampling
+
+Output from the Monte Carlo sampling begins after 
+
+~~~
+ ======= Starting MC chain =======
+~~~
+
+During the sampling the algorithm attempts changes to one of each model parameter,
+and either accepts or rejects the model with:
+
+~~~
+ :::: ACCEPTED ::::  s= 0 i= 2 chi2= 0.660028312 chi2New= 0.6897556611
+~~~
+
+or
+
+~~~
+ :::: REJECTED ::::  s= 0 i= 6 chi2= 0.7558173591 chi2New= 1.840898714
+~~~
+
+The current state of the parameters is then displayed as
+
+~~~
+ :::: STATE ::::  chi2= 0.7558173591  MC Parameters: S1=  +6.8416240000 Y1=  +0.2652640273 Z1=  +0.0119143034 S2=  +7.1056362659 Y2=  +0.2781065949 Z2=  +0.0323756282 PSwitch1=  +79.0272519051 PSwitch2=  +103.1830952493 omega= +0.9913867210 +0.9948385058 +1.0046551844 +1.0250106842 +1.0382056094 +1.0457426337
+~~~
+
+Where `chi2` quantifies the difference between the calculated and observed (target)
+gravitational harmonics, $J_n$. The individal harmonics are once again desplayed.
+
+~~~
+ Target:         J2= 16290.5510 J4=  -935.2490 J6=    86.3580 J8=   -14.5390 J10=     4.7750
+ Final: Jn*10^6: J2= 16290.5511 J4=  -936.1244 J6=    86.6531 J8=   -14.8042 J10=     4.6867 J12=    -1.3443 J14=   0.121533 J16=   0.022133
+~~~
 
 ## Citation
 
-To cite ***cmsmc*** or derived code in publications, please include the following
+To cite ***CMS_Saturn*** or derived code in publications, please include the following
 publications:
 
 - Hubbard, W. B. (2013). Concentric Maclaurin Spheroid Models of Rotating Liquid Planets. The Astrophysical Journal, 768(1), 43. http://doi.org/10.1088/0004-637X/768/1/43
