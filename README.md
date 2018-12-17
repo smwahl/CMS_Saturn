@@ -6,7 +6,7 @@ Axisymmetric Concentric Maclaurin Spheroid simulations of Saturn with Differenti
 
 This code is provided as supplementary material for the article:
 
-- Iess, L., Militzer, B., Kaspi, Y., Nicholson, P., Durante, D., Racioppa, P., … Zannoni, M. (2019). Measurement and implications of Saturn’s gravity field and ring mass. Science, (in Press).
+- Iess, L., Militzer, B., Kaspi, Y., Nicholson, P., Durante, D., Racioppa, P.,  Anabtaw, A., Galanti, E., Hubbard, W., Mariani, M. J., Tortora, P., Wahl, S. M., Zannoni, M. (2019). Measurement and implications of Saturn’s gravity field and ring mass. Science, (in Press).
 
 It calculates self-consistent shape and gravitational field for interior structure
 models of the planet Saturn.
@@ -15,38 +15,32 @@ It reflects the contributions of B. Militzer, S. M. Wahl and B. Hubbard to the
 analysis contained in the sections on "Saturn interior models with uniform rotation"
 and "Differential rotation on cylinders with the CMS method" in said paper.
 
-The examples provided in this distribution are intended to demonstrate the
-reproducibility of the model results presented in Figures 2 and 3, along with the
-representative model presented in column 5 of Table 2.
-
 ## Requirements
 
 We provide two binary executables: one compiled on x86_64 Ubuntu Linux using the GNU
-c++ compiler (gcc version 5.2.0). And has been tested to work on similar Unix
-systems.  The other was compiled on MacOS 10.XX.XX (gcc version X.X.X) and has been
-tested to work on other recent versions.
+c++ compiler (gcc version 5.2.0). The other was compiled on MacOS 10.14.2 (gcc version 4.2.1).
 
 ## Installation 
 
 - Locate and download the [binary release](https://github.com/smwahl/cmsmc/releases).
 
-- Uncompress the the ZIP file.
+- Uncompress the ZIP file.
 
 ~~~bash
-unzip cmsmc_release_linux_v1.0.zip cms_saturn_v1.0_science.zip
+unzip CMS_Saturn_v1.0.zip
 ~~~
 
 - You may need to change permissions on the executable files.
 
 ~~~bash
-chmod +x cms_Linux cms_MAC
+chmod +x cms_Linux cms_osx
 ~~~
 
 ## Running the Code
 
-Select the correct executable for your system `cms_Linux` or `cms_MAC`.
+Select the correct executable for your system `cms_Linux` or `cms_osx`.
 
-The program is exexcuted with the :
+The program is executed with the command:
 
 ~~~bash
 ./cms file=initial_models.txt iModel=random runMC
@@ -54,7 +48,7 @@ The program is exexcuted with the :
 
 This begins a Monte Carlo search of cms models starting from one of 11 starting
 models included in `initial_models.txt`. A sample output text file is included for
-this in `sample_output.txt`.
+this in `reference_output.txt`.
 
 ### Command-line arguments
 
@@ -83,7 +77,7 @@ The code can then be ran for each value presented in the article using:
 The code will run two initial calculations
     
 1. An initial simulation with the parameters in the input file.
-2. A series of calculations attempting to fit the target value for $J_2$ using the 
+2. A series of calculations attempting to fit the target value for J_2 using the 
 
 If the flag `runMC` is omitted the code will then stop at this point; if `runMC` is
 included it will proceed to run Monte Carlo sampling with the 
@@ -96,10 +90,10 @@ The barotropic density profile is described by 8 parameters describing condition
 the outer, molecular envelope, the inner, metallic envelope, and the transition
 between the two states
 
-- Entropy of outer envelope (`S1`) in ***Units***
+- Entropy of outer envelope (`S1`) in S/kB/Ne
 - Helium mass fraction of outer envelope (`Y1`)
 - Heavy element mass fraction of outer envelope (`Z1`)
-- Entropy of outer envelope (`S2`) in ***Units***
+- Entropy of outer envelope (`S2`) in S/kB/Ne
 - Helium mass fraction of outer envelope (`Y2`)
 - Heavy element mass fraction of outer envelope (`Z2`)
 - Pressure of the top of the helium rain layer (`PSwitch1`)
@@ -137,7 +131,7 @@ CMS finished: chi2= 0.3061849421 for  MC Parameters: S1=  +6.8416240000 Y1=  +0.
 ~~~
 
 and a comparison of the calculated and observed (target) gravitational harmonics
-$J_n$
+J_n.
 
 ~~~
 Target:         J2= 16290.5510 J4=  -935.2490 J6=    86.3580 J8=   -14.5390 J10=     4.7750
