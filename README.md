@@ -11,7 +11,9 @@ This code is provided as supplementary material for the article:
 It calculates self-consistent shape and gravitational field for interior structure
 models of the planet Saturn.
 
-It reflects the contributions of B. Militzer, S. M. Wahl and B. Hubbard to the
+It reflects the contributions of [B. Militzer](http://militzer.berkeley.edu/), 
+[S. M. Wahl](https://www.linkedin.com/in/sean-wahl-a6365996/) 
+and [B. Hubbard](https://www.lpl.arizona.edu/faculty/hubbard) to the
 analysis contained in the sections on "Saturn interior models with uniform rotation"
 and "Differential rotation on cylinders with the CMS method" in said paper.
 
@@ -80,7 +82,7 @@ The code can then be ran for each value presented in the article using:
 The code will run two initial calculations
     
 1. An initial simulation with the parameters in the input file.
-2. A series of calculations attempting to fit the target value for J_2 using the 
+2. A series of calculations attempting to fit the target value for `J2` using the 
 
 If the flag `runMC` is omitted the code will then stop at this point; if `runMC` is
 included it will proceed to run Monte Carlo sampling. 
@@ -138,7 +140,7 @@ CMS finished: chi2= 0.3061849421 for  MC Parameters: S1=  +6.8416240000 Y1=  +0.
 ~~~
 
 and a comparison of the calculated and observed (target) gravitational harmonics
-J_n.
+`Jn`.
 
 ~~~
 Target:         J2= 16290.5510 J4=  -935.2490 J6=    86.3580 J8=   -14.5390 J10=     4.7750
@@ -179,7 +181,7 @@ The current state of the parameters is then displayed as
  :::: STATE ::::  chi2= 0.7558173591  MC Parameters: S1=  +6.8416240000 Y1=  +0.2652640273 Z1=  +0.0119143034 S2=  +7.1056362659 Y2=  +0.2781065949 Z2=  +0.0323756282 PSwitch1=  +79.0272519051 PSwitch2=  +103.1830952493 omega= +0.9913867210 +0.9948385058 +1.0046551844 +1.0250106842 +1.0382056094 +1.0457426337
 ~~~
 
-The mismatch between the calculated and obserbed gravitational harmonics, J_n
+The mismatch between the calculated and obserbed gravitational harmonics, `Jn`
 guides the Monte Carlo sampling.  
  The individal harmonics are once again desplayed for each Monte Carlo step.
 
@@ -193,7 +195,7 @@ guides the Monte Carlo sampling.
 To cite ***CMS_Saturn*** or derived code in publications, please include the following
 publications:
 
-- Hubbard, W. B. (2013). Concentric Maclaurin Spheroid Models of Rotating Liquid Planets. The Astrophysical Journal, 768(1), 43. http://doi.org/10.1088/0004-637X/768/1/43
+- Hubbard, W. B. (2013). *Concentric Maclaurin Spheroid Models of Rotating Liquid Planets.* The Astrophysical Journal, 768(1), 43. http://doi.org/10.1088/0004-637X/768/1/43
 
 - Wahl, S. M., Hubbard, W. B., & Militzer, B. (2017). *The Concentric Maclaurin Spheroid method with tides and a rotational enhancement of Saturn’s tidal response.* Icarus, 282, 183–194. http://doi.org/10.1016/j.icarus.2016.09.011
 
